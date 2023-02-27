@@ -1,19 +1,41 @@
 package com.minimalistlauncher
 
-import com.minimalistlauncher.utilities.SimpleFragmentPagerAdapter
-import androidx.appcompat.app.AppCompatActivity
+import android.content.Intent
 import android.os.Bundle
+import androidx.appcompat.app.AppCompatActivity
 import androidx.viewpager.widget.ViewPager
+import com.minimalistlauncher.utilities.SimpleFragmentPagerAdapter
+import com.minimalistlauncher.utilities.requestPermission
+
 
 class MainActivity : AppCompatActivity() {
+
+    private lateinit var viewPager: ViewPager
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        val viewPager = findViewById<ViewPager>(R.id.viewpager)
+        viewPager = findViewById<ViewPager>(R.id.viewpager)
         val adapter = SimpleFragmentPagerAdapter(supportFragmentManager)
         viewPager.adapter = adapter
+        viewPager.currentItem = 1
+
+        val intent = Intent("android.settings.ACTION_NOTIFICATION_LISTENER_SETTINGS")
+        //startActivity(intent)
+
+        val not = Intent(this, NotificationListener::class.java)
+        if (this != null) {
+            this.startService(not)
+        }
+
+        requestPermission(applicationContext)
 
     }
-
+    override fun onBackPressed() {
+        if (viewPager.currentItem == 1) {
+            super.onBackPressed()
+        } else {
+            viewPager.currentItem = viewPager.currentItem - 1
+        }
+    }
 }

@@ -6,6 +6,9 @@ import android.content.pm.PackageInfo
 
 import com.minimalistlauncher.classe.appli
 
+/*
+    get all app installed on the device
+ */
 fun getApp(context: Context): ArrayList<appli> {
     val pm = context.packageManager
     val list = ArrayList<appli>()

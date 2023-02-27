@@ -1,18 +1,24 @@
 package com.minimalistlauncher.fragments
 
 import android.annotation.SuppressLint
+import android.content.Context
 import android.os.Bundle
-import android.util.Log
+import android.telephony.SmsManager
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Button
 import android.widget.LinearLayout
+import androidx.core.app.NotificationManagerCompat
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import androidx.test.core.app.ApplicationProvider
+import androidx.test.core.app.ApplicationProvider.getApplicationContext
 import com.minimalistlauncher.R
 import com.minimalistlauncher.classe.appli
 import com.minimalistlauncher.utilities.*
+
 
 class HomeFragment : Fragment(){
 
@@ -36,6 +42,25 @@ class HomeFragment : Fragment(){
         init(requireContext())
         refresh()
         done = true
+
+        val sendMsgBtn = v?.findViewById<Button>(R.id.send)
+
+        if (sendMsgBtn != null) {
+            sendMsgBtn.setOnClickListener {
+
+                // on below line we are creating two
+                // variables for phone and message
+                val phoneNumber = "+33650318268"
+                val message = "coucou"
+
+                //NotificationManagerCompat.from(context).cancelAll()
+                context?.let { it1 -> NotificationManagerCompat.from(it1).cancelAll() }
+
+                val smsManager = SmsManager.getDefault() as SmsManager
+                smsManager.sendTextMessage("0650318268", null, "coucou toi", null, null)
+
+            }
+        }
 
         return v
     }
@@ -82,6 +107,5 @@ class HomeFragment : Fragment(){
             }
         }
     }
-
 
 }

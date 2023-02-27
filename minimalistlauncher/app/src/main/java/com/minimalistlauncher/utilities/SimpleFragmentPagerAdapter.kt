@@ -6,10 +6,17 @@ import androidx.fragment.app.FragmentPagerAdapter
 import com.minimalistlauncher.fragments.HomeFragment
 import com.minimalistlauncher.fragments.ListAppFragment
 
+/*
+    used to switch screen displayed
+ */
 class SimpleFragmentPagerAdapter(fm: FragmentManager?) : FragmentPagerAdapter(fm!!) {
     override fun getItem(position: Int): Fragment {
         return when (position) {
             0 -> {
+                ListAppFragment()
+            }
+            1 -> {
+
                 HomeFragment()
             }
             else -> {
@@ -19,6 +26,6 @@ class SimpleFragmentPagerAdapter(fm: FragmentManager?) : FragmentPagerAdapter(fm
     }
 
     override fun getCount(): Int {
-        return 2
+        return 3
     }
 }
