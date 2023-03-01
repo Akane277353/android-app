@@ -7,6 +7,7 @@ import android.view.Gravity
 import android.view.Window
 import android.view.WindowManager
 import android.widget.Button
+import android.widget.FrameLayout
 import android.widget.LinearLayout
 import androidx.cardview.widget.CardView
 import androidx.fragment.app.Fragment
@@ -27,20 +28,26 @@ class SettingsPopup(
         requestWindowFeature(Window.FEATURE_NO_TITLE)
         setContentView(R.layout.settings_popup)
 
-        val card = findViewById<CardView>(R.id.card)
-        card.setCardBackgroundColor(Color.WHITE)
+        //val card = findViewById<CardView>(R.id.card)
+        //card.setCardBackgroundColor(Color.WHITE)
 
-        val hide = findViewById<Button>(R.id.hide)
-        val delete = findViewById<Button>(R.id.delete)
-        val home = findViewById<Button>(R.id.home)
+        //val frame = findViewById<FrameLayout>(R.id.frame)
+        //frame.setBackgroundColor(Color.TRANSPARENT);
+
+        //val hide = findViewById<Button>(R.id.hide)
+        //val delete = findViewById<Button>(R.id.delete)
+        //val home = findViewById<Button>(R.id.home)
+        /*
         if (current.home) {
-            home.text = "remove from home"
+            //home.text = "remove from home"
         }
 
         hide.setOnClickListener() {
             this.dismiss()
         }
 
+         */
+/*
         delete.setOnClickListener() {
             this.dismiss()
         }
@@ -55,6 +62,8 @@ class SettingsPopup(
             adapter.notifyDataSetChanged()
             this.dismiss()
         }
+
+ */
     }
 
     fun setGravity() {

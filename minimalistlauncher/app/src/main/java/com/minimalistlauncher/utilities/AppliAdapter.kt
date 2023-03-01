@@ -12,6 +12,9 @@ import android.widget.TextView
 import androidx.cardview.widget.CardView
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.recyclerview.widget.RecyclerView
+import androidx.fragment.app.DialogFragment
+import com.google.android.material.dialog.MaterialAlertDialogBuilder
+
 import com.minimalistlauncher.R
 import com.minimalistlauncher.fragments.SettingsPopup
 import com.minimalistlauncher.classe.appli
@@ -58,10 +61,21 @@ class AppliAdapter(
 
         holder.layout.setOnLongClickListener(object: View.OnLongClickListener {
             override fun onLongClick(v: View?): Boolean {
+                /*
                 var popup = SettingsPopup(cont, current)
                 popup.setGravity()
                 popup.show()
                 println("created")
+
+                 */
+
+                val items = arrayOf("Item 1", "Item 2", "Item 3")
+
+
+                var builder = MaterialAlertDialogBuilder(context).setTitle("ok")
+                    .setMessage("oui")
+                builder.create()
+                builder.show()
                 return true
             }
         })
