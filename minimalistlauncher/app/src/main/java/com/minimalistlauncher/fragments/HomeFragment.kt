@@ -1,23 +1,25 @@
 package com.minimalistlauncher.fragments
 
 import android.annotation.SuppressLint
-import android.content.Context
+import android.content.Context.BATTERY_SERVICE
+import android.os.BatteryManager
 import android.os.Bundle
-import android.telephony.SmsManager
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Button
 import android.widget.LinearLayout
-import androidx.core.app.NotificationManagerCompat
+import android.widget.ProgressBar
+import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import androidx.test.core.app.ApplicationProvider
-import androidx.test.core.app.ApplicationProvider.getApplicationContext
 import com.minimalistlauncher.R
 import com.minimalistlauncher.classe.appli
 import com.minimalistlauncher.utilities.*
+import kotlinx.coroutines.*
+import java.text.SimpleDateFormat
+import java.util.*
+import kotlin.collections.ArrayList
 
 
 class HomeFragment : Fragment(){
@@ -25,6 +27,7 @@ class HomeFragment : Fragment(){
     var list = ArrayList<appli>()
     var v : View? = null
     var done = false
+    val c: Calendar = Calendar.getInstance()
 
     @SuppressLint("MissingInflatedId")
     override fun onCreateView(
@@ -43,7 +46,26 @@ class HomeFragment : Fragment(){
         refresh()
         done = true
 
+        val time = v?.findViewById<TextView>(R.id.time)
+        val battery = v?.findViewById<ProgressBar>(R.id.progressBar)
+        if (time != null && battery != null) {
+            updateUI(time, battery)
+        }
+
         return v
+    }
+
+    fun updateUI(txt: TextView, bat: ProgressBar) {
+        GlobalScope.launch(Dispatchers.Main) {
+            val bm = context?.getSystemService(BATTERY_SERVICE) as BatteryManager
+            while (true) {
+                val sdf = SimpleDateFormat("HH:mm:ss")
+                txt.text = sdf.format(Date())
+                val batLevel:Int = bm.getIntProperty(BatteryManager.BATTERY_PROPERTY_CAPACITY)
+                bat.setProgress(batLevel)
+                delay(10000)
+            }
+        }
     }
 
     fun refresh() {

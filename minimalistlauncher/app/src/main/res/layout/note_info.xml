@@ -1,43 +1,31 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="wrap_content"
+    android:layout_width="match_parent"
     android:id="@+id/card"
     android:layout_height="50dp"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     app:contentPaddingRight="20dp"
     app:cardBackgroundColor="@color/white"
-    android:layout_marginTop="20dp"
+    android:layout_marginTop="10dp"
     app:cardCornerRadius="50dp"
     android:layout_marginLeft="50dp"
-    app:cardElevation="10dp">
+    android:layout_marginRight="50dp"
+    app:cardElevation="10dp"
+    android:layout_marginBottom="20dp">
 
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/layout"
-        android:layout_width="match_parent"
+        android:layout_width="336dp"
         android:layout_height="match_parent">
 
-
-        <ImageView
-            android:id="@+id/image"
-            android:layout_width="40dp"
-            android:layout_height="match_parent"
-            android:layout_marginStart="24dp"
-            android:layout_weight="1"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.0"
-            tools:ignore="MissingConstraints"
-            tools:srcCompat="@tools:sample/avatars" />
-
         <Space
-            android:id="@+id/space"
-            android:layout_width="10dp"
+            android:id="@+id/space2"
+            android:layout_width="50dp"
             android:layout_height="wrap_content"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/image"
+            app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             tools:ignore="MissingConstraints" />
 
@@ -45,15 +33,24 @@
             android:id="@+id/text"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
             android:text="TextView"
             android:textColor="@color/black"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintEnd_toEndOf="@+id/space"
             app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toEndOf="@+id/space"
+            app:layout_constraintStart_toEndOf="@+id/space2"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintVertical_bias="0.512"
             tools:ignore="MissingConstraints" />
+
+        <Space
+            android:id="@+id/space"
+            android:layout_width="10dp"
+            android:layout_height="wrap_content"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:ignore="MissingConstraints" />
+
     </androidx.constraintlayout.widget.ConstraintLayout>
 </androidx.cardview.widget.CardView>

@@ -20,6 +20,7 @@ class MainActivity : AppCompatActivity() {
         viewPager.adapter = adapter
         viewPager.currentItem = 1
     }
+
     override fun onBackPressed() {
         if (viewPager.currentItem == 1) {
             super.onBackPressed()
