@@ -5,12 +5,12 @@ import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.viewpager.widget.ViewPager
 import com.minimalistlauncher.utilities.SimpleFragmentPagerAdapter
-import com.minimalistlauncher.utilities.requestPermission
 
 
 class MainActivity : AppCompatActivity() {
 
     private lateinit var viewPager: ViewPager
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
@@ -19,17 +19,6 @@ class MainActivity : AppCompatActivity() {
         val adapter = SimpleFragmentPagerAdapter(supportFragmentManager)
         viewPager.adapter = adapter
         viewPager.currentItem = 1
-
-        val intent = Intent("android.settings.ACTION_NOTIFICATION_LISTENER_SETTINGS")
-        //startActivity(intent)
-
-        val not = Intent(this, NotificationListener::class.java)
-        if (this != null) {
-            this.startService(not)
-        }
-
-        requestPermission(applicationContext)
-
     }
     override fun onBackPressed() {
         if (viewPager.currentItem == 1) {

@@ -43,25 +43,6 @@ class HomeFragment : Fragment(){
         refresh()
         done = true
 
-        val sendMsgBtn = v?.findViewById<Button>(R.id.send)
-
-        if (sendMsgBtn != null) {
-            sendMsgBtn.setOnClickListener {
-
-                // on below line we are creating two
-                // variables for phone and message
-                val phoneNumber = "+33650318268"
-                val message = "coucou"
-
-                //NotificationManagerCompat.from(context).cancelAll()
-                context?.let { it1 -> NotificationManagerCompat.from(it1).cancelAll() }
-
-                val smsManager = SmsManager.getDefault() as SmsManager
-                smsManager.sendTextMessage("0650318268", null, "coucou toi", null, null)
-
-            }
-        }
-
         return v
     }
 
