@@ -47,7 +47,8 @@ class HomeFragment : Fragment(){
         done = true
 
         val time = v?.findViewById<TextView>(R.id.time)
-        val battery = v?.findViewById<ProgressBar>(R.id.progressBar)
+        //val battery = v?.findViewById<ProgressBar>(R.id.progressBar)
+        val battery = v?.findViewById<ProgressBar>(R.id.circular)
         if (time != null && battery != null) {
             updateUI(time, battery)
         }
@@ -62,7 +63,7 @@ class HomeFragment : Fragment(){
                 val sdf = SimpleDateFormat("HH:mm:ss")
                 txt.text = sdf.format(Date())
                 val batLevel:Int = bm.getIntProperty(BatteryManager.BATTERY_PROPERTY_CAPACITY)
-                bat.setProgress(batLevel)
+                bat.progress = batLevel
                 delay(10000)
             }
         }

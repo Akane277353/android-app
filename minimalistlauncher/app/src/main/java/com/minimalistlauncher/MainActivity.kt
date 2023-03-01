@@ -3,6 +3,7 @@ package com.minimalistlauncher
 import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.content.ContextCompat
 import androidx.viewpager.widget.ViewPager
 import com.minimalistlauncher.utilities.SimpleFragmentPagerAdapter
 
@@ -14,6 +15,9 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+
+        supportActionBar?.hide()
+        window.statusBarColor = ContextCompat.getColor(this, R.color.black)
 
         viewPager = findViewById<ViewPager>(R.id.viewpager)
         val adapter = SimpleFragmentPagerAdapter(supportFragmentManager)

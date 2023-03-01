@@ -1,11 +1,14 @@
 package com.minimalistlauncher.fragments
 
 import android.app.Dialog
+import android.graphics.Color
 import android.os.Bundle
 import android.view.Gravity
 import android.view.Window
 import android.view.WindowManager
 import android.widget.Button
+import android.widget.LinearLayout
+import androidx.cardview.widget.CardView
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentTransaction
 import com.minimalistlauncher.R
@@ -23,6 +26,9 @@ class SettingsPopup(
         super.onCreate(savedInstanceState)
         requestWindowFeature(Window.FEATURE_NO_TITLE)
         setContentView(R.layout.settings_popup)
+
+        val card = findViewById<CardView>(R.id.card)
+        card.setCardBackgroundColor(Color.WHITE)
 
         val hide = findViewById<Button>(R.id.hide)
         val delete = findViewById<Button>(R.id.delete)
